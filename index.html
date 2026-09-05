@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shopiva — Lo que quieres, donde quieras</title>
+<meta name="description" content="Tienda online en Colombia con pago contra entrega. Productos útiles y de calidad, envíos rápidos y seguros a todo el país.">
+<link rel="icon" type="image/png" href="./assets/isotipo.png">
+<meta property="og:title" content="Shopiva — Lo que quieres, donde quieras">
+<meta property="og:description" content="Tienda online en Colombia con pago contra entrega. Productos de calidad, envíos rápidos y seguros.">
+<meta property="og:image" content="./assets/shopiva-cover.png">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --navy:#0A0826; --navy-2:#0F0C33; --surface:#171340; --surface-2:#1E1852;
+    --ink:#FFFFFF; --muted:#B4AFE0; --faint:#7E79B8;
+    --border:rgba(255,255,255,.09); --border-2:rgba(255,255,255,.16);
+    --orange:#FF8A1E; --magenta:#F0208C; --purple:#8B27C9; --blue:#2D7FF9; --cyan:#21C6E8;
+    --grad:linear-gradient(100deg,var(--orange),var(--magenta) 42%,var(--purple) 70%,var(--blue));
+    --grad-warm:linear-gradient(100deg,var(--orange),var(--magenta));
+    --grad-cool:linear-gradient(100deg,var(--magenta),var(--purple) 55%,var(--blue));
+    --radius:18px;
+    --shadow:0 2px 6px rgba(0,0,0,.3),0 26px 60px -28px rgba(15,12,51,.9);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--navy); color:var(--ink);
+    font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(1100px 620px at 82% -8%,rgba(139,39,201,.30),transparent 60%),
+                     radial-gradient(900px 560px at 4% 8%,rgba(45,127,249,.22),transparent 60%);
+    background-attachment:fixed;
+  }
+  img{max-width:100%; display:block}
+  a{color:inherit; text-decoration:none}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 22px}
+  h1,h2,h3{font-family:"Baloo 2",system-ui,sans-serif; margin:0; line-height:1.08; letter-spacing:-.01em}
+  .grad-text{background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .eyebrow{font-size:12.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--cyan)}
+
+  /* ── Nav ── */
+  nav{position:sticky; top:0; z-index:30; backdrop-filter:blur(12px);
+    background:rgba(10,8,38,.72); border-bottom:1px solid var(--border)}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:66px; gap:16px}
+  .brand{display:flex; align-items:center; gap:11px; font-family:"Baloo 2",sans-serif; font-weight:800; font-size:21px}
+  .brand img{width:38px; height:38px}
+  .brand .w{background:var(--ink); -webkit-background-clip:text; background-clip:text}
+  .navlinks{display:flex; gap:28px; font-size:14.5px; font-weight:600}
+  .navlinks a{color:var(--muted); transition:.15s}
+  .navlinks a:hover{color:var(--ink)}
+  @media(max-width:760px){.navlinks{display:none}}
+  .btn{display:inline-flex; align-items:center; gap:9px; font-weight:700; font-size:15px;
+    padding:13px 24px; border-radius:999px; border:1px solid transparent; cursor:pointer; transition:.16s;
+    font-family:"Plus Jakarta Sans",sans-serif}
+  .btn.primary{background:var(--grad-warm); color:#fff; box-shadow:0 8px 22px -8px rgba(240,32,140,.65)}
+  .btn.primary:hover{transform:translateY(-1px); box-shadow:0 12px 28px -8px rgba(240,32,140,.75)}
+  .btn.ghost{background:rgba(255,255,255,.05); border-color:var(--border-2); color:var(--ink)}
+  .btn.ghost:hover{background:rgba(255,255,255,.1)}
+  .btn:focus-visible{outline:2px solid var(--cyan); outline-offset:3px}
+  nav .btn{padding:9px 18px; font-size:14px}
+
+  /* ── Hero ── */
+  .hero{padding:70px 0 46px}
+  .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:46px; align-items:center}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr; gap:34px; text-align:center}}
+  .hero h1{font-size:clamp(38px,6.4vw,62px); font-weight:800; margin:16px 0 14px}
+  .hero .lede{font-size:clamp(16px,2.2vw,19px); color:var(--muted); max-width:40ch; margin:0}
+  @media(max-width:860px){.hero .lede{margin:0 auto}}
+  .cta-row{display:flex; gap:13px; flex-wrap:wrap; margin-top:28px}
+  @media(max-width:860px){.cta-row{justify-content:center}}
+  .badges{display:grid; grid-template-columns:repeat(2,auto); gap:14px 26px; margin-top:34px; justify-content:start}
+  @media(max-width:860px){.badges{justify-content:center}}
+  .bd{display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600}
+  .bd .dot{width:30px; height:30px; border-radius:9px; display:grid; place-items:center; flex:none;
+    background:rgba(255,255,255,.06); border:1px solid var(--border)}
+  .bd .dot svg{width:17px; height:17px}
+  .hero-visual{position:relative; display:grid; place-items:center}
+  .glow{position:absolute; width:78%; aspect-ratio:1; border-radius:50%; filter:blur(60px);
+    background:conic-gradient(from 0deg,var(--orange),var(--magenta),var(--purple),var(--blue),var(--cyan),var(--orange));
+    opacity:.5; z-index:0; animation:spin 18s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .hero-visual img{position:relative; z-index:1; width:min(360px,80%); filter:drop-shadow(0 24px 50px rgba(0,0,0,.5))}
+  @media(prefers-reduced-motion:reduce){.glow{animation:none}}
+
+  /* ── Sections ── */
+  section.block{padding:56px 0; border-top:1px solid var(--border)}
+  .sec-head{max-width:58ch; margin-bottom:32px}
+  .sec-head h2{font-size:clamp(26px,4vw,38px); font-weight:800; margin:10px 0 9px}
+  .sec-head p{color:var(--muted); font-size:16px; margin:0}
+
+  /* ── Products ── */
+  .prod-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px}
+  @media(max-width:640px){.prod-grid{grid-template-columns:1fr}}
+  .prod{position:relative; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:24px; overflow:hidden; transition:.18s}
+  .prod::before{content:""; position:absolute; inset:0 0 auto 0; height:4px; background:var(--grad)}
+  .prod:hover{transform:translateY(-3px); border-color:var(--border-2); box-shadow:var(--shadow)}
+  .prod .cat{display:inline-block; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+    color:#fff; padding:4px 11px; border-radius:999px; background:var(--grad-cool); margin-bottom:12px}
+  .prod h3{font-size:19px; font-weight:700; line-height:1.22; margin-bottom:8px}
+  .prod p{color:var(--muted); font-size:14.5px; margin:0 0 16px}
+  .prod .foot{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap}
+  .prod .price{font-family:"Baloo 2",sans-serif; font-weight:800; font-size:24px}
+  .prod .price small{display:block; font-family:"Plus Jakarta Sans"; font-size:11.5px; font-weight:600; color:var(--faint)}
+  .prod .buy{font-weight:700; font-size:14px; color:var(--cyan); display:inline-flex; align-items:center; gap:6px; transition:.15s}
+  .prod .buy:hover{gap:9px}
+
+  /* ── Steps ── */
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:20px}
+  @media(max-width:760px){.steps{grid-template-columns:1fr}}
+  .step{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:26px}
+  .step .n{width:44px; height:44px; border-radius:12px; background:var(--grad-warm); color:#fff;
+    font-family:"Baloo 2",sans-serif; font-weight:800; font-size:20px; display:grid; place-items:center}
+  .step h3{font-size:18px; font-weight:700; margin:16px 0 6px}
+  .step p{color:var(--muted); font-size:14.5px; margin:0}
+
+  /* ── Policies ── */
+  .pol-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:28px}
+  @media(max-width:760px){.pol-grid{grid-template-columns:1fr}}
+  .pol{scroll-margin-top:84px}
+  .pol h3{font-size:18px; font-weight:700; margin:0 0 10px; display:flex; align-items:center; gap:11px}
+  .pol h3 .ic{width:34px; height:34px; border-radius:10px; display:grid; place-items:center; flex:none;
+    background:rgba(255,255,255,.06); border:1px solid var(--border); color:var(--cyan)}
+  .pol h3 .ic svg{width:18px; height:18px}
+  .pol p{color:var(--muted); font-size:14.5px; margin:0 0 9px}
+  .pol ul{margin:0; padding-left:19px; display:flex; flex-direction:column; gap:6px}
+  .pol li{color:var(--muted); font-size:14.5px}
+
+  /* ── Contact ── */
+  .contact{border-radius:26px; padding:44px; background:var(--grad); position:relative; overflow:hidden}
+  .contact::after{content:""; position:absolute; inset:0; background:rgba(10,8,38,.28)}
+  .contact .inner{position:relative; z-index:1; display:grid; grid-template-columns:1.2fr 1fr; gap:32px; align-items:center}
+  @media(max-width:760px){.contact{padding:30px}.contact .inner{grid-template-columns:1fr}}
+  .contact h2{color:#fff; font-size:clamp(26px,4vw,36px); font-weight:800}
+  .contact .sub{margin:12px 0 0; color:rgba(255,255,255,.92); font-size:16px}
+  .contact .rows{display:flex; flex-direction:column; gap:13px}
+  .crow{display:flex; align-items:center; gap:12px; font-size:15.5px; font-weight:600; color:#fff}
+  .crow svg{width:21px; height:21px; flex:none}
+  .crow a{border-bottom:1px solid rgba(255,255,255,.5)}
+  .ph{color:#FFE7A3; font-weight:700; border-bottom:1.5px dotted #FFE7A3}
+
+  /* ── Footer ── */
+  footer{border-top:1px solid var(--border); padding:34px 0 50px; margin-top:8px}
+  footer .wrap{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:center}
+  footer .legal{color:var(--faint); font-size:13px}
+  footer .brand{font-size:18px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="./assets/isotipo.png" alt="Shopiva"><span class="w">Shopiva</span></a>
+    <div class="navlinks">
+      <a href="#productos">Productos</a>
+      <a href="#como">Cómo comprar</a>
+      <a href="#politicas">Políticas</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="#contacto" class="btn primary">Pedir por WhatsApp</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Tienda online · Colombia</span>
+      <h1>Lo que quieres,<br><span class="grad-text">donde quieras.</span></h1>
+      <p class="lede">Productos útiles y de calidad con <b>pago contra entrega</b>. Pides hoy y pagas cuando el producto llega a tu puerta. Envíos rápidos y seguros a todo el país.</p>
+      <div class="cta-row">
+        <a href="#productos" class="btn primary">Ver productos</a>
+        <a href="#como" class="btn ghost">Cómo funciona</a>
+      </div>
+      <div class="badges">
+        <span class="bd"><span class="dot" style="color:var(--magenta)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span> Productos de calidad</span>
+        <span class="bd"><span class="dot" style="color:var(--cyan)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span> Envíos rápidos y seguros</span>
+        <span class="bd"><span class="dot" style="color:var(--orange)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/><path d="m9 12 2 2 4-4"/></svg></span> Compra 100% segura</span>
+        <span class="bd"><span class="dot" style="color:var(--blue)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12a8 8 0 0 1 16 0"/><rect x="2" y="12" width="4" height="7" rx="1.5"/><rect x="18" y="12" width="4" height="7" rx="1.5"/><path d="M20 19a4 4 0 0 1-4 3h-2"/></svg></span> Atención al cliente</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <span class="glow"></span>
+      <img src="./assets/isotipo.png" alt="Logo Shopiva">
+    </div>
+  </div>
+</header>
+
+<section class="block" id="productos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Catálogo</span>
+      <h2>Productos destacados</h2>
+      <p>Seleccionados por su calidad y utilidad. Todos con pago contra entrega y listos para despacho.</p>
+    </div>
+    <div class="prod-grid">
+      <article class="prod">
+        <span class="cat">Cuidado personal</span>
+        <h3>Depiladora de Cejas de Micro-Precisión con Luz LED</h3>
+        <p>Depilación indolora y precisa para cejas y vello facial, con luz LED integrada. Recargable y de bolsillo.</p>
+        <div class="foot"><span class="price">$59.900<small>1 unidad · combos con envío gratis</small></span><a href="#contacto" class="buy">Pedir →</a></div>
+      </article>
+      <article class="prod">
+        <span class="cat">Mascotas</span>
+        <h3>Cepillo Vaporizador 3 en 1 para Mascotas</h3>
+        <p>Cepilla, hidrata y retira el pelo suelto de tu perro o gato en un solo paso. Menos pelo en toda la casa.</p>
+        <div class="foot"><span class="price">$54.000<small>1 unidad · combos con envío gratis</small></span><a href="#contacto" class="buy">Pedir →</a></div>
+      </article>
+      <article class="prod">
+        <span class="cat">Hogar · Baño</span>
+        <h3>Organizador de Cepillos con Luz UV + Dispensador de Crema</h3>
+        <p>Mantén los cepillos ordenados y limpios, con dispensador automático de crema dental. Ideal para la familia.</p>
+        <div class="foot"><span class="price">$54.000<small>1 unidad · combos con envío gratis</small></span><a href="#contacto" class="buy">Pedir →</a></div>
+      </article>
+      <article class="prod">
+        <span class="cat">Hogar · Cocina</span>
+        <h3>Organizador de Cocina Multifuncional</h3>
+        <p>Aprovecha cada espacio de tu cocina con este organizador multifuncional. Práctico, resistente y fácil de instalar.</p>
+        <div class="foot"><span class="price">$54.000<small>1 unidad · combos con envío gratis</small></span><a href="#contacto" class="buy">Pedir →</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="como">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Cómo comprar</span>
+      <h2>Comprar es simple y seguro</h2>
+      <p>No pagas nada por adelantado. El dinero se entrega solo cuando el producto está en tus manos.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Escríbenos</h3><p>Contáctanos por WhatsApp y cuéntanos qué producto y cuántas unidades quieres.</p></div>
+      <div class="step"><div class="n">2</div><h3>Confirmamos</h3><p>Verificamos cobertura, tomamos tus datos de envío y agendamos la entrega en tu ciudad.</p></div>
+      <div class="step"><div class="n">3</div><h3>Recibe y paga</h3><p>El transportador lo lleva a tu dirección. Revisas el producto y pagas en efectivo al recibirlo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="politicas">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Transparencia</span>
+      <h2>Políticas de la tienda</h2>
+      <p>Compra con confianza: así tratamos tus datos, los envíos, las garantías y las devoluciones.</p>
+    </div>
+    <div class="pol-grid">
+      <div class="pol" id="privacidad">
+        <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>Privacidad de datos</h3>
+        <p>Solo pedimos los datos necesarios para procesar y entregar tu pedido: nombre, teléfono, ciudad y dirección.</p>
+        <ul>
+          <li>Usamos tus datos únicamente para gestionar la venta y el envío.</li>
+          <li>No vendemos ni compartimos tu información con terceros ajenos a la entrega.</li>
+          <li>Puedes pedir la eliminación de tus datos por WhatsApp o correo.</li>
+        </ul>
+      </div>
+      <div class="pol" id="envios">
+        <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>Envíos y cobertura</h3>
+        <p>Enviamos a todo el territorio nacional a través de transportadora aliada.</p>
+        <ul>
+          <li>Entrega estimada: 2 a 5 días hábiles según la ciudad.</li>
+          <li>Envío gratis al pedir 2 o más unidades.</li>
+          <li>Confirmamos cada pedido por WhatsApp antes de despacharlo.</li>
+        </ul>
+      </div>
+      <div class="pol" id="garantia">
+        <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-15-6.7L3 13"/></svg></span>Garantía y devoluciones</h3>
+        <p>Queremos que quedes satisfecho con tu compra.</p>
+        <ul>
+          <li>Revisa el producto al momento de recibirlo, antes de pagar.</li>
+          <li>Garantía por defectos de fábrica: 8 días desde la entrega.</li>
+          <li>Si llega defectuoso, te lo cambiamos sin costo.</li>
+        </ul>
+      </div>
+      <div class="pol" id="pagos">
+        <h3><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></span>Formas de pago</h3>
+        <p>Trabajamos con pago contra entrega para tu tranquilidad.</p>
+        <ul>
+          <li>Pagas en efectivo al transportador cuando recibes.</li>
+          <li>No pedimos pagos ni anticipos antes de la entrega.</li>
+          <li>Nunca solicitamos claves, códigos ni datos de tarjetas.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="contacto">
+  <div class="wrap">
+    <div class="contact">
+      <div class="inner">
+        <div>
+          <h2>¿Listo para pedir?</h2>
+          <p class="sub">Escríbenos y con gusto te ayudamos a elegir y coordinar tu entrega contra entrega.</p>
+        </div>
+        <div class="rows">
+          <div class="crow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg> WhatsApp: <a href="https://wa.me/57XXXXXXXXXX"><span class="ph">+57 300 000 0000</span></a></div>
+          <div class="crow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg> Correo: <a href="#"><span class="ph">hola@shopiva.co</span></a></div>
+          <div class="crow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> <span class="ph">Ciudad, Colombia</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="./assets/isotipo.png" alt="Shopiva" style="width:32px;height:32px"><span class="w">Shopiva</span></a>
+    <div class="legal">© <span id="yr">2026</span> Shopiva · Lo que quieres, donde quieras · Colombia</div>
+  </div>
+</footer>
+
+<script>try{document.getElementById('yr').textContent=new Date().getFullYear();}catch(e){}</script>
+</body>
+</html>
